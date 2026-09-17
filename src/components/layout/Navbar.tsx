@@ -33,7 +33,7 @@ export const Navbar = ({ onOpenBooking, activeSection }: NavbarProps) => {
     setMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80;
+      const offset = 70;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -52,7 +52,7 @@ export const Navbar = ({ onOpenBooking, activeSection }: NavbarProps) => {
       <div style={{
         background: 'var(--color-navy-dark)',
         color: 'var(--text-inverse-muted)',
-        fontSize: '0.815rem',
+        fontSize: '0.8rem',
         padding: '0.45rem 1rem',
         borderBottom: '1px solid rgba(255,255,255,0.06)'
       }}>
@@ -61,34 +61,35 @@ export const Navbar = ({ onOpenBooking, activeSection }: NavbarProps) => {
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
-          gap: '0.5rem'
+          gap: '0.4rem'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#e2e8f0' }}>
-              <MapPin size={14} style={{ color: 'var(--color-primary-light)' }} />
-              {CLINIC_INFO.address.city}, {CLINIC_INFO.address.wilaya} (Boulevard Principal)
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#e2e8f0', fontSize: '0.78rem' }}>
+              <MapPin size={13} style={{ color: 'var(--color-primary-light)', flexShrink: 0 }} />
+              {CLINIC_INFO.address.city}, {CLINIC_INFO.address.wilaya}
             </span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#cbd5e1' }}>
-              <Clock size={14} style={{ color: 'var(--color-accent-light)' }} />
-              Samedi – Jeudi : 09h00 – 17h00
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#cbd5e1', fontSize: '0.78rem' }} className="hide-on-very-small">
+              <Clock size={13} style={{ color: 'var(--color-accent-light)', flexShrink: 0 }} />
+              Samedi – Jeudi : 09h – 17h
             </span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <span className="status-indicator" style={{ color: '#6ee7b7', fontSize: '0.8rem', fontWeight: 600 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <span className="status-indicator hide-on-mobile" style={{ color: '#6ee7b7', fontSize: '0.78rem', fontWeight: 600 }}>
               <span className="status-dot"></span>
-              Consultations ouvertes
+              Ouvert
             </span>
             <a
               href={`tel:${CLINIC_INFO.phones[0].replace(/\s+/g, '')}`}
               style={{
                 color: '#ffffff',
                 fontWeight: 700,
+                fontSize: '0.8rem',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.35rem'
+                gap: '0.3rem'
               }}
             >
-              <Phone size={13} style={{ color: 'var(--color-primary-light)' }} />
+              <Phone size={12} style={{ color: 'var(--color-primary-light)' }} />
               {CLINIC_INFO.phonesFormatted[0]}
             </a>
           </div>
@@ -101,13 +102,13 @@ export const Navbar = ({ onOpenBooking, activeSection }: NavbarProps) => {
           position: 'sticky',
           top: 0,
           zIndex: 100,
-          background: isScrolled ? 'rgba(255, 255, 255, 0.96)' : 'rgba(255, 255, 255, 0.98)',
+          background: isScrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.98)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
           borderBottom: isScrolled ? '1px solid var(--border-light)' : '1px solid transparent',
           boxShadow: isScrolled ? 'var(--shadow-sm)' : 'none',
           transition: 'all var(--transition-normal)',
-          height: '76px',
+          height: '70px',
           display: 'flex',
           alignItems: 'center',
         }}
@@ -125,59 +126,65 @@ export const Navbar = ({ onOpenBooking, activeSection }: NavbarProps) => {
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.85rem',
-              userSelect: 'none'
+              gap: '0.65rem',
+              userSelect: 'none',
+              maxWidth: 'calc(100% - 130px)'
             }}
           >
             <div
               style={{
-                width: '46px',
-                height: '46px',
-                borderRadius: '12px',
+                width: '40px',
+                height: '40px',
+                borderRadius: '10px',
                 background: 'linear-gradient(135deg, var(--color-navy) 0%, var(--color-primary) 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: 'white',
                 boxShadow: '0 4px 12px rgba(13, 107, 99, 0.25)',
-                position: 'relative'
+                flexShrink: 0
               }}
             >
-              {/* Dental / Aesthetic Smile Icon Vector */}
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2C7.5 2 4 5.5 4 10c0 3.5 2 7 4 11 1 2 2.5 2 4 0 1.5 2 3 2 4 0 2-4 4-7.5 4-11 0-4.5-3.5-8-8-8z"/>
                 <path d="M9 10c1 1.5 5 1.5 6 0" stroke="var(--color-accent-light)" strokeWidth="2.5" />
               </svg>
             </div>
-            <div>
+            <div style={{ overflow: 'hidden' }}>
               <div style={{
                 fontFamily: 'var(--font-heading)',
                 fontWeight: 800,
-                fontSize: '1.25rem',
+                fontSize: '1.15rem',
                 lineHeight: 1.1,
                 color: 'var(--color-navy)',
                 letterSpacing: '-0.02em',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.35rem'
+                gap: '0.25rem',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
               }}>
                 KHELLAF
                 <span style={{ color: 'var(--color-primary)', fontWeight: 600 }}>ORTHO</span>
               </div>
               <div style={{
-                fontSize: '0.72rem',
+                fontSize: '0.68rem',
                 color: 'var(--text-muted)',
                 fontWeight: 600,
                 letterSpacing: '0.04em',
-                textTransform: 'uppercase'
+                textTransform: 'uppercase',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
               }}>
-                Orthodontie & Aligneurs • Draria
+                Draria, Alger
               </div>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav style={{ display: 'none', gap: '1.75rem', alignItems: 'center' }} className="desktop-nav">
+          <nav style={{ display: 'none', gap: '1.5rem', alignItems: 'center' }} className="desktop-nav">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -198,12 +205,6 @@ export const Navbar = ({ onOpenBooking, activeSection }: NavbarProps) => {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.35rem'
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!isActive) e.currentTarget.style.color = 'var(--color-primary)';
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isActive) e.currentTarget.style.color = 'var(--text-main)';
                   }}
                 >
                   {link.label}
@@ -238,35 +239,38 @@ export const Navbar = ({ onOpenBooking, activeSection }: NavbarProps) => {
           </nav>
 
           {/* Action CTAs */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
             <button
               onClick={() => onOpenBooking()}
               className="btn btn-primary btn-sm"
               style={{
                 display: 'inline-flex',
-                boxShadow: '0 4px 14px rgba(13, 107, 99, 0.3)'
+                padding: '0.5rem 0.9rem',
+                fontSize: '0.85rem'
               }}
             >
-              <Calendar size={16} />
-              <span>Prendre RDV</span>
+              <Calendar size={15} />
+              <span className="hide-on-very-small">Prendre RDV</span>
+              <span className="show-on-very-small">RDV</span>
             </button>
 
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="mobile-menu-toggle"
-              aria-label="Menu"
+              aria-label="Menu de navigation"
               style={{
                 display: 'none',
                 background: 'var(--bg-subtle)',
                 border: '1px solid var(--border-light)',
-                borderRadius: '10px',
-                padding: '0.5rem',
+                borderRadius: '8px',
+                padding: '0.45rem',
                 cursor: 'pointer',
-                color: 'var(--color-navy)'
+                color: 'var(--color-navy)',
+                flexShrink: 0
               }}
             >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
@@ -276,18 +280,20 @@ export const Navbar = ({ onOpenBooking, activeSection }: NavbarProps) => {
           <div
             style={{
               position: 'fixed',
-              top: '76px',
+              top: '70px',
               left: 0,
               right: 0,
-              background: 'white',
-              borderBottom: '1px solid var(--border-light)',
-              boxShadow: 'var(--shadow-xl)',
-              padding: '1.5rem',
+              bottom: 0,
+              background: 'rgba(255, 255, 255, 0.98)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              padding: '1.25rem',
               display: 'flex',
               flexDirection: 'column',
-              gap: '1rem',
+              gap: '0.75rem',
               zIndex: 99,
-              animation: 'fadeIn 0.25s ease-out'
+              overflowY: 'auto',
+              borderTop: '1px solid var(--border-light)'
             }}
           >
             {navLinks.map((link) => (
@@ -301,11 +307,12 @@ export const Navbar = ({ onOpenBooking, activeSection }: NavbarProps) => {
                   fontSize: '1.05rem',
                   fontWeight: 600,
                   color: 'var(--color-navy)',
-                  padding: '0.65rem 0',
+                  padding: '0.75rem 0',
                   borderBottom: '1px solid var(--border-light)',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'space-between'
+                  justifyContent: 'space-between',
+                  cursor: 'pointer'
                 }}
               >
                 <span>{link.label}</span>
@@ -315,7 +322,7 @@ export const Navbar = ({ onOpenBooking, activeSection }: NavbarProps) => {
               </button>
             ))}
 
-            <div style={{ paddingTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <div style={{ paddingTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
@@ -341,6 +348,9 @@ export const Navbar = ({ onOpenBooking, activeSection }: NavbarProps) => {
       </header>
 
       <style>{`
+        .show-on-very-small {
+          display: none;
+        }
         @media (min-width: 960px) {
           .desktop-nav {
             display: flex !important;
@@ -355,6 +365,19 @@ export const Navbar = ({ onOpenBooking, activeSection }: NavbarProps) => {
           }
           .mobile-menu-toggle {
             display: block !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .hide-on-mobile {
+            display: none !important;
+          }
+        }
+        @media (max-width: 380px) {
+          .hide-on-very-small {
+            display: none !important;
+          }
+          .show-on-very-small {
+            display: inline !important;
           }
         }
       `}</style>

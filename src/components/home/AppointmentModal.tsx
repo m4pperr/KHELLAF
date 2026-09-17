@@ -74,22 +74,23 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <div
-        className="modal-container"
+        className="modal-container appointment-modal-box"
         onClick={(e) => e.stopPropagation()}
-        style={{ padding: '2.5rem' }}
+        style={{ padding: '2rem' }}
       >
         {/* Modal Header */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: '1.75rem',
-          paddingBottom: '1rem',
-          borderBottom: '1px solid var(--border-light)'
+          alignItems: 'flex-start',
+          marginBottom: '1.5rem',
+          paddingBottom: '0.85rem',
+          borderBottom: '1px solid var(--border-light)',
+          gap: '0.5rem'
         }}>
           <div>
             <div style={{
-              fontSize: '0.78rem',
+              fontSize: '0.75rem',
               fontWeight: 700,
               textTransform: 'uppercase',
               color: 'var(--color-primary)',
@@ -97,67 +98,69 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
             }}>
               Cabinet Khellaf Orthodontics • Draria
             </div>
-            <h3 style={{ fontSize: '1.5rem', color: 'var(--color-navy)', marginTop: '0.2rem' }}>
+            <h3 style={{ fontSize: '1.35rem', color: 'var(--color-navy)', marginTop: '0.2rem' }}>
               Prise de Rendez-vous en Ligne
             </h3>
           </div>
           <button
             onClick={onClose}
+            aria-label="Fermer"
             style={{
               background: 'var(--bg-subtle)',
               border: 'none',
-              width: '36px',
-              height: '36px',
+              width: '34px',
+              height: '34px',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              color: 'var(--text-muted)'
+              color: 'var(--text-muted)',
+              flexShrink: 0
             }}
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
         {/* Success Confirmation Screen */}
         {isSubmitted ? (
-          <div style={{ textAlign: 'center', padding: '1.5rem 0' }}>
+          <div style={{ textAlign: 'center', padding: '1rem 0' }}>
             <div style={{
-              width: '72px',
-              height: '72px',
+              width: '64px',
+              height: '64px',
               borderRadius: '50%',
               background: '#dcfce7',
               color: '#15803d',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              margin: '0 auto 1.5rem auto'
+              margin: '0 auto 1.25rem auto'
             }}>
-              <CheckCircle2 size={42} />
+              <CheckCircle2 size={36} />
             </div>
 
-            <h4 style={{ fontSize: '1.6rem', color: 'var(--color-navy)', marginBottom: '0.75rem' }}>
+            <h4 style={{ fontSize: '1.4rem', color: 'var(--color-navy)', marginBottom: '0.65rem' }}>
               Demande enregistrée avec succès !
             </h4>
 
-            <p style={{ color: 'var(--text-muted)', fontSize: '1rem', maxWidth: '480px', margin: '0 auto 2rem auto', lineHeight: 1.6 }}>
-              Merci <strong>{formData.fullName}</strong>. Notre secrétariat médical vous contactera par téléphone au <strong>{formData.phone}</strong> pour vous confirmer l'heure exacte de votre rendez-vous.
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', maxWidth: '480px', margin: '0 auto 1.5rem auto', lineHeight: 1.6 }}>
+              Merci <strong>{formData.fullName}</strong>. Notre secrétariat vous contactera par téléphone au <strong>{formData.phone}</strong> pour confirmer l'heure exacte.
             </p>
 
             <div style={{
               background: 'var(--bg-subtle)',
               borderRadius: 'var(--radius-md)',
-              padding: '1.5rem',
+              padding: '1.25rem',
               textAlign: 'left',
               maxWidth: '480px',
-              margin: '0 auto 2rem auto',
+              margin: '0 auto 1.75rem auto',
               border: '1px solid var(--border-light)'
             }}>
-              <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-light)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                Récapitulatif de votre demande
+              <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-light)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+                Récapitulatif
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.92rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.88rem' }}>
                 <div><strong>Soin :</strong> {selectedService.title}</div>
                 <div><strong>Date souhaitée :</strong> {formData.preferredDate}</div>
                 <div><strong>Créneau :</strong> {formData.preferredTimeSlot === 'matin' ? 'Matin (09h – 13h)' : 'Après-midi (13h – 17h)'}</div>
@@ -165,7 +168,7 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', maxWidth: '420px', margin: '0 auto' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', maxWidth: '420px', margin: '0 auto' }}>
               <a
                 href={getWhatsAppBookingUrl()}
                 target="_blank"
@@ -174,7 +177,7 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                 style={{ borderColor: '#25d366', color: '#128c7e', fontWeight: 700, justifyContent: 'center' }}
               >
                 <MessageSquare size={18} />
-                <span>Envoyer confirmation instantanée sur WhatsApp</span>
+                <span>Envoyer sur WhatsApp</span>
               </a>
 
               <button
@@ -193,69 +196,72 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              marginBottom: '2rem'
+              marginBottom: '1.5rem'
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                 <span style={{
-                  width: '28px',
-                  height: '28px',
+                  width: '26px',
+                  height: '26px',
                   borderRadius: '50%',
                   background: step >= 1 ? 'var(--color-primary)' : 'var(--border-light)',
                   color: 'white',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '0.85rem',
-                  fontWeight: 700
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  flexShrink: 0
                 }}>
                   1
                 </span>
-                <span style={{ fontSize: '0.88rem', fontWeight: step === 1 ? 700 : 500, color: step === 1 ? 'var(--color-navy)' : 'var(--text-muted)' }}>
-                  Motif de consultation
+                <span style={{ fontSize: '0.82rem', fontWeight: step === 1 ? 700 : 500, color: step === 1 ? 'var(--color-navy)' : 'var(--text-muted)' }} className="step-label">
+                  Motif
                 </span>
               </div>
 
-              <div style={{ flex: 1, height: '2px', background: 'var(--border-light)', margin: '0 0.75rem' }} />
+              <div style={{ flex: 1, height: '2px', background: 'var(--border-light)', margin: '0 0.5rem' }} />
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                 <span style={{
-                  width: '28px',
-                  height: '28px',
+                  width: '26px',
+                  height: '26px',
                   borderRadius: '50%',
                   background: step >= 2 ? 'var(--color-primary)' : 'var(--border-light)',
                   color: 'white',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '0.85rem',
-                  fontWeight: 700
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  flexShrink: 0
                 }}>
                   2
                 </span>
-                <span style={{ fontSize: '0.88rem', fontWeight: step === 2 ? 700 : 500, color: step === 2 ? 'var(--color-navy)' : 'var(--text-muted)' }}>
-                  Date & Heure
+                <span style={{ fontSize: '0.82rem', fontWeight: step === 2 ? 700 : 500, color: step === 2 ? 'var(--color-navy)' : 'var(--text-muted)' }} className="step-label">
+                  Date
                 </span>
               </div>
 
-              <div style={{ flex: 1, height: '2px', background: 'var(--border-light)', margin: '0 0.75rem' }} />
+              <div style={{ flex: 1, height: '2px', background: 'var(--border-light)', margin: '0 0.5rem' }} />
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                 <span style={{
-                  width: '28px',
-                  height: '28px',
+                  width: '26px',
+                  height: '26px',
                   borderRadius: '50%',
                   background: step >= 3 ? 'var(--color-primary)' : 'var(--border-light)',
                   color: 'white',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '0.85rem',
-                  fontWeight: 700
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  flexShrink: 0
                 }}>
                   3
                 </span>
-                <span style={{ fontSize: '0.88rem', fontWeight: step === 3 ? 700 : 500, color: step === 3 ? 'var(--color-navy)' : 'var(--text-muted)' }}>
-                  Coordonnées
+                <span style={{ fontSize: '0.82rem', fontWeight: step === 3 ? 700 : 500, color: step === 3 ? 'var(--color-navy)' : 'var(--text-muted)' }} className="step-label">
+                  Infos
                 </span>
               </div>
             </div>
@@ -263,10 +269,10 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
             {/* Step 1: Select Service */}
             {step === 1 && (
               <div>
-                <h4 style={{ fontSize: '1.1rem', color: 'var(--color-navy)', marginBottom: '1rem' }}>
-                  Sélectionnez le motif principal de votre visite :
+                <h4 style={{ fontSize: '1rem', color: 'var(--color-navy)', marginBottom: '0.85rem' }}>
+                  Sélectionnez le motif de consultation :
                 </h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.75rem' }}>
                   {SERVICES_DATA.map((srv) => {
                     const isSelected = formData.serviceId === srv.id;
                     return (
@@ -274,7 +280,7 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                         key={srv.id}
                         onClick={() => handleServiceSelect(srv.id)}
                         style={{
-                          padding: '1.15rem',
+                          padding: '0.9rem 1rem',
                           borderRadius: 'var(--radius-md)',
                           border: isSelected ? '2px solid var(--color-primary)' : '1px solid var(--border-light)',
                           background: isSelected ? 'var(--color-primary-subtle)' : 'white',
@@ -285,28 +291,28 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                           transition: 'all var(--transition-fast)'
                         }}
                       >
-                        <div>
-                          <div style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--color-navy)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            {srv.title}
+                        <div style={{ overflow: 'hidden' }}>
+                          <div style={{ fontWeight: 700, fontSize: '0.92rem', color: 'var(--color-navy)', display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
+                            <span>{srv.title}</span>
                             {srv.badge && (
-                              <span className="badge badge-gold" style={{ fontSize: '0.7rem' }}>
+                              <span className="badge badge-gold" style={{ fontSize: '0.68rem', padding: '0.1rem 0.35rem' }}>
                                 {srv.badge}
                               </span>
                             )}
                           </div>
-                          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
+                          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.15rem', lineHeight: 1.4 }}>
                             {srv.shortDesc}
                           </div>
                         </div>
 
                         <div style={{
-                          width: '22px',
-                          height: '22px',
+                          width: '20px',
+                          height: '20px',
                           borderRadius: '50%',
                           border: isSelected ? '6px solid var(--color-primary)' : '2px solid var(--border-medium)',
                           background: 'white',
                           flexShrink: 0,
-                          marginLeft: '1rem'
+                          marginLeft: '0.75rem'
                         }} />
                       </div>
                     );
@@ -314,9 +320,9 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  <button onClick={handleNext} className="btn btn-primary">
+                  <button onClick={handleNext} className="btn btn-primary" style={{ width: '100%' }}>
                     <span>Continuer vers le choix de la date</span>
-                    <ArrowRight size={18} />
+                    <ArrowRight size={17} />
                   </button>
                 </div>
               </div>
@@ -325,12 +331,12 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
             {/* Step 2: Date & Slot */}
             {step === 2 && (
               <div>
-                <h4 style={{ fontSize: '1.1rem', color: 'var(--color-navy)', marginBottom: '1.25rem' }}>
+                <h4 style={{ fontSize: '1rem', color: 'var(--color-navy)', marginBottom: '1rem' }}>
                   Quand souhaitez-vous venir au cabinet ?
                 </h4>
 
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.5rem' }}>
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.4rem' }}>
                     Date souhaitée (Samedi au Jeudi)
                   </label>
                   <input
@@ -339,28 +345,28 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
                     style={{
                       width: '100%',
-                      padding: '0.85rem 1rem',
+                      padding: '0.8rem 0.9rem',
                       borderRadius: 'var(--radius-md)',
                       border: '1px solid var(--border-light)',
-                      fontSize: '1rem',
+                      fontSize: '0.95rem',
                       color: 'var(--text-main)'
                     }}
                   />
-                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>
-                    * Le cabinet est fermé le vendredi. Les horaires exacts seront validés par téléphone.
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.3rem' }}>
+                    * Le cabinet est fermé le vendredi. L'heure précise sera validée par téléphone.
                   </div>
                 </div>
 
-                <div style={{ marginBottom: '2rem' }}>
-                  <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.75rem' }}>
+                <div style={{ marginBottom: '1.75rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.65rem' }}>
                     Période de la journée préférée
                   </label>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                     <button
                       type="button"
                       onClick={() => setFormData({ ...formData, preferredTimeSlot: 'matin' })}
                       style={{
-                        padding: '1.15rem',
+                        padding: '1rem 0.5rem',
                         borderRadius: 'var(--radius-md)',
                         border: formData.preferredTimeSlot === 'matin' ? '2px solid var(--color-primary)' : '1px solid var(--border-light)',
                         background: formData.preferredTimeSlot === 'matin' ? 'var(--color-primary-subtle)' : 'white',
@@ -368,15 +374,15 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                         textAlign: 'center'
                       }}
                     >
-                      <div style={{ fontWeight: 700, color: 'var(--color-navy)', fontSize: '1rem' }}>Matinée</div>
-                      <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>09h00 – 13h00</div>
+                      <div style={{ fontWeight: 700, color: 'var(--color-navy)', fontSize: '0.95rem' }}>Matinée</div>
+                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>09h – 13h</div>
                     </button>
 
                     <button
                       type="button"
                       onClick={() => setFormData({ ...formData, preferredTimeSlot: 'apres-midi' })}
                       style={{
-                        padding: '1.15rem',
+                        padding: '1rem 0.5rem',
                         borderRadius: 'var(--radius-md)',
                         border: formData.preferredTimeSlot === 'apres-midi' ? '2px solid var(--color-primary)' : '1px solid var(--border-light)',
                         background: formData.preferredTimeSlot === 'apres-midi' ? 'var(--color-primary-subtle)' : 'white',
@@ -384,20 +390,20 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                         textAlign: 'center'
                       }}
                     >
-                      <div style={{ fontWeight: 700, color: 'var(--color-navy)', fontSize: '1rem' }}>Après-midi</div>
-                      <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>13h00 – 17h00</div>
+                      <div style={{ fontWeight: 700, color: 'var(--color-navy)', fontSize: '0.95rem' }}>Après-midi</div>
+                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>13h – 17h</div>
                     </button>
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
-                  <button onClick={handlePrev} className="btn btn-secondary">
-                    <ArrowLeft size={18} />
+                <div style={{ display: 'flex', gap: '0.75rem' }} className="modal-nav-buttons">
+                  <button onClick={handlePrev} className="btn btn-secondary" style={{ flex: 1 }}>
+                    <ArrowLeft size={16} />
                     <span>Retour</span>
                   </button>
-                  <button onClick={handleNext} className="btn btn-primary">
-                    <span>Continuer vers vos coordonnées</span>
-                    <ArrowRight size={18} />
+                  <button onClick={handleNext} className="btn btn-primary" style={{ flex: 2 }}>
+                    <span>Vos coordonnées</span>
+                    <ArrowRight size={16} />
                   </button>
                 </div>
               </div>
@@ -406,13 +412,13 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
             {/* Step 3: Patient Info Form */}
             {step === 3 && (
               <form onSubmit={handleSubmit}>
-                <h4 style={{ fontSize: '1.1rem', color: 'var(--color-navy)', marginBottom: '1.25rem' }}>
+                <h4 style={{ fontSize: '1rem', color: 'var(--color-navy)', marginBottom: '1rem' }}>
                   Vos informations de contact :
                 </h4>
 
                 {/* Patient status */}
-                <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '1.25rem' }}>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontSize: '0.92rem' }}>
+                <div style={{ display: 'flex', gap: '1.25rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer', fontSize: '0.88rem' }}>
                     <input
                       type="radio"
                       name="patientType"
@@ -421,20 +427,20 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                     />
                     <span>Nouveau patient</span>
                   </label>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontSize: '0.92rem' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer', fontSize: '0.88rem' }}>
                     <input
                       type="radio"
                       name="patientType"
                       checked={formData.patientType === 'deja-patient'}
                       onChange={() => setFormData({ ...formData, patientType: 'deja-patient' })}
                     />
-                    <span>Déjà patient au cabinet</span>
+                    <span>Déjà patient</span>
                   </label>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem', marginBottom: '0.85rem' }} className="modal-inputs-grid">
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.3rem' }}>
                       Nom & Prénom *
                     </label>
                     <input
@@ -445,16 +451,16 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       style={{
                         width: '100%',
-                        padding: '0.8rem 1rem',
+                        padding: '0.75rem 0.85rem',
                         borderRadius: 'var(--radius-md)',
                         border: '1px solid var(--border-light)',
-                        fontSize: '0.95rem'
+                        fontSize: '0.92rem'
                       }}
                     />
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.3rem' }}>
                       Numéro de Téléphone *
                     </label>
                     <input
@@ -465,17 +471,17 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       style={{
                         width: '100%',
-                        padding: '0.8rem 1rem',
+                        padding: '0.75rem 0.85rem',
                         borderRadius: 'var(--radius-md)',
                         border: '1px solid var(--border-light)',
-                        fontSize: '0.95rem'
+                        fontSize: '0.92rem'
                       }}
                     />
                   </div>
                 </div>
 
-                <div style={{ marginBottom: '1rem' }}>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
+                <div style={{ marginBottom: '0.85rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.3rem' }}>
                     Adresse E-mail (optionnelle)
                   </label>
                   <input
@@ -485,43 +491,43 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     style={{
                       width: '100%',
-                      padding: '0.8rem 1rem',
+                      padding: '0.75rem 0.85rem',
                       borderRadius: 'var(--radius-md)',
                       border: '1px solid var(--border-light)',
-                      fontSize: '0.95rem'
+                      fontSize: '0.92rem'
                     }}
                   />
                 </div>
 
-                <div style={{ marginBottom: '1.75rem' }}>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.3rem' }}>
                     Remarques ou questions (facultatif)
                   </label>
                   <textarea
                     rows={2}
-                    placeholder="Précisez ici vos disponibilités ou toute question relative à vos dents..."
+                    placeholder="Précisez ici vos disponibilités ou toute question..."
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                     style={{
                       width: '100%',
-                      padding: '0.8rem 1rem',
+                      padding: '0.75rem 0.85rem',
                       borderRadius: 'var(--radius-md)',
                       border: '1px solid var(--border-light)',
-                      fontSize: '0.95rem',
+                      fontSize: '0.92rem',
                       resize: 'none'
                     }}
                   />
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
-                  <button type="button" onClick={handlePrev} className="btn btn-secondary">
-                    <ArrowLeft size={18} />
+                <div style={{ display: 'flex', gap: '0.75rem' }} className="modal-nav-buttons">
+                  <button type="button" onClick={handlePrev} className="btn btn-secondary" style={{ flex: 1 }}>
+                    <ArrowLeft size={16} />
                     <span>Retour</span>
                   </button>
 
-                  <button type="submit" className="btn btn-primary btn-lg">
-                    <CheckCircle2 size={18} />
-                    <span>Confirmer ma demande de rendez-vous</span>
+                  <button type="submit" className="btn btn-primary" style={{ flex: 2 }}>
+                    <CheckCircle2 size={16} />
+                    <span>Confirmer ma demande</span>
                   </button>
                 </div>
               </form>
@@ -529,6 +535,25 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
           </div>
         )}
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .appointment-modal-box {
+            padding: 1.25rem !important;
+          }
+          .modal-inputs-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 400px) {
+          .modal-nav-buttons {
+            flex-direction: column !important;
+          }
+          .modal-nav-buttons button {
+            width: 100% !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

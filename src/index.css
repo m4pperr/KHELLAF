@@ -85,6 +85,8 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -93,6 +95,8 @@ body {
   color: var(--text-main);
   line-height: 1.65;
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 /* Typography Classes */
@@ -101,6 +105,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-main);
   line-height: 1.25;
   letter-spacing: -0.02em;
+  word-break: break-word;
 }
 
 h1 { font-weight: 800; }
@@ -109,6 +114,7 @@ h3 { font-weight: 600; }
 
 p {
   color: var(--text-muted);
+  word-break: break-word;
 }
 
 a {
@@ -119,6 +125,7 @@ a {
 
 button, input, select, textarea {
   font-family: inherit;
+  font-size: 100%;
 }
 
 /* Layout Utilities */
@@ -131,16 +138,25 @@ button, input, select, textarea {
   padding-right: 1.5rem;
 }
 
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 .section {
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .section {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 }
 
@@ -150,7 +166,14 @@ button, input, select, textarea {
   max-width: 720px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 640px) {
+  .section-header {
+    margin-bottom: 2rem;
+    text-align: left;
+  }
 }
 
 .section-tag {
@@ -160,12 +183,14 @@ button, input, select, textarea {
   padding: 0.4rem 1rem;
   background: var(--color-primary-subtle);
   color: var(--color-primary-dark);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   border-radius: var(--radius-full);
   margin-bottom: 1rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  max-width: 100%;
+  white-space: normal;
 }
 
 .section-tag-gold {
@@ -181,12 +206,25 @@ button, input, select, textarea {
 @media (max-width: 768px) {
   .section-title {
     font-size: 1.85rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.6rem;
   }
 }
 
 .section-subtitle {
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
 }
 
 /* Gradients */
@@ -212,7 +250,7 @@ button, input, select, textarea {
 
 /* Glassmorphism & Cards */
 .glass-card {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.8);
@@ -222,7 +260,7 @@ button, input, select, textarea {
 }
 
 .glass-card-hover:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
   border-color: rgba(20, 148, 136, 0.3);
 }
@@ -242,15 +280,23 @@ button, input, select, textarea {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  padding: 0.85rem 1.75rem;
-  font-size: 0.975rem;
+  padding: 0.85rem 1.65rem;
+  font-size: 0.95rem;
   font-weight: 600;
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: all var(--transition-normal);
   border: none;
   outline: none;
-  white-space: nowrap;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    width: 100%;
+  }
 }
 
 .btn-primary {
@@ -289,31 +335,6 @@ button, input, select, textarea {
   box-shadow: 0 8px 20px rgba(217, 119, 6, 0.45);
 }
 
-.btn-outline-white {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  backdrop-filter: blur(8px);
-}
-
-.btn-outline-white:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.6);
-  transform: translateY(-2px);
-}
-
-.btn-emergency {
-  background: var(--color-emergency-bg);
-  color: var(--color-emergency);
-  border: 1px solid rgba(225, 29, 72, 0.2);
-  font-weight: 600;
-}
-
-.btn-emergency:hover {
-  background: var(--color-emergency);
-  color: white;
-}
-
 .btn-sm {
   padding: 0.55rem 1.15rem;
   font-size: 0.875rem;
@@ -321,8 +342,8 @@ button, input, select, textarea {
 }
 
 .btn-lg {
-  padding: 1.05rem 2.25rem;
-  font-size: 1.05rem;
+  padding: 1rem 2rem;
+  font-size: 1.025rem;
   border-radius: var(--radius-md);
 }
 
@@ -347,16 +368,6 @@ button, input, select, textarea {
   color: var(--color-accent);
 }
 
-.badge-blue {
-  background: #e0f2fe;
-  color: #0369a1;
-}
-
-.badge-green {
-  background: #dcfce7;
-  color: #15803d;
-}
-
 /* Floating Status Indicator */
 .status-indicator {
   display: inline-flex;
@@ -370,6 +381,7 @@ button, input, select, textarea {
   border-radius: 50%;
   background-color: var(--color-success);
   position: relative;
+  flex-shrink: 0;
 }
 
 .status-dot::after {
@@ -391,19 +403,10 @@ button, input, select, textarea {
   100% { transform: scale(0.95); opacity: 0; }
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.4s var(--transition-smooth) forwards;
-}
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -419,7 +422,7 @@ button, input, select, textarea {
   background: #94a3b8;
 }
 
-/* Floating action for mobile / WhatsApp quick bar */
+/* Floating contact widget for mobile */
 .floating-contact-bar {
   position: fixed;
   bottom: 1.25rem;
@@ -430,46 +433,60 @@ button, input, select, textarea {
   gap: 0.75rem;
 }
 
+@media (max-width: 640px) {
+  .floating-contact-bar {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
 .floating-btn-whatsapp {
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: #25d366;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .floating-btn-whatsapp:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
   box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
 }
 
-/* Modal Backdrop & Container */
+/* Modal Backdrop & Container Mobile Friendly */
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(7, 21, 32, 0.75);
+  background: rgba(7, 21, 32, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 1rem;
-  animation: fadeIn 0.25s ease-out forwards;
+  padding: 0.75rem;
 }
 
 .modal-container {
   background: #ffffff;
   border-radius: var(--radius-xl);
-  max-width: 680px;
+  max-width: 650px;
   width: 100%;
-  max-height: 90vh;
+  max-height: 92vh;
   overflow-y: auto;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
   position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 640px) {
+  .modal-container {
+    border-radius: var(--radius-lg);
+    max-height: 95vh;
+  }
 }

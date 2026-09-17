@@ -7,15 +7,15 @@ interface QuickInfoStripProps {
 
 export const QuickInfoStrip = ({ onOpenBooking }: QuickInfoStripProps) => {
   return (
-    <div style={{
+    <div className="quick-strip-wrapper" style={{
       position: 'relative',
       zIndex: 10,
-      marginTop: '-2.5rem',
+      width: '100%',
       marginBottom: '2rem'
     }}>
       <div className="container">
         <div
-          className="glass-card"
+          className="glass-card quick-strip-card"
           style={{
             background: 'white',
             padding: '1.25rem 2rem',
@@ -27,7 +27,7 @@ export const QuickInfoStrip = ({ onOpenBooking }: QuickInfoStripProps) => {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '1.5rem',
+            gap: '1.25rem',
             alignItems: 'center'
           }} className="quick-strip-grid">
 
@@ -37,19 +37,16 @@ export const QuickInfoStrip = ({ onOpenBooking }: QuickInfoStripProps) => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '1rem',
+                gap: '0.85rem',
                 textDecoration: 'none',
-                padding: '0.5rem',
+                padding: '0.4rem',
                 borderRadius: 'var(--radius-md)',
-                transition: 'background var(--transition-fast)'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.background = 'var(--bg-subtle)'}
-              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
             >
               <div style={{
-                width: '46px',
-                height: '46px',
-                borderRadius: '12px',
+                width: '42px',
+                height: '42px',
+                borderRadius: '10px',
                 background: 'var(--color-primary-subtle)',
                 color: 'var(--color-primary)',
                 display: 'flex',
@@ -57,13 +54,13 @@ export const QuickInfoStrip = ({ onOpenBooking }: QuickInfoStripProps) => {
                 justifyContent: 'center',
                 flexShrink: 0
               }}>
-                <Phone size={22} />
+                <Phone size={20} />
               </div>
-              <div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+              <div style={{ overflow: 'hidden' }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600 }}>
                   Secrétariat & RDV
                 </div>
-                <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--color-navy)' }}>
+                <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-navy)', whiteSpace: 'nowrap' }}>
                   {CLINIC_INFO.phonesFormatted[0]}
                 </div>
               </div>
@@ -77,19 +74,16 @@ export const QuickInfoStrip = ({ onOpenBooking }: QuickInfoStripProps) => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '1rem',
+                gap: '0.85rem',
                 textDecoration: 'none',
-                padding: '0.5rem',
+                padding: '0.4rem',
                 borderRadius: 'var(--radius-md)',
-                transition: 'background var(--transition-fast)'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.background = 'var(--bg-subtle)'}
-              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
             >
               <div style={{
-                width: '46px',
-                height: '46px',
-                borderRadius: '12px',
+                width: '42px',
+                height: '42px',
+                borderRadius: '10px',
                 background: '#e0f2fe',
                 color: '#0284c7',
                 display: 'flex',
@@ -97,13 +91,13 @@ export const QuickInfoStrip = ({ onOpenBooking }: QuickInfoStripProps) => {
                 justifyContent: 'center',
                 flexShrink: 0
               }}>
-                <MapPin size={22} />
+                <MapPin size={20} />
               </div>
               <div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600 }}>
                   Centre de Draria
                 </div>
-                <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--color-navy)' }}>
+                <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--color-navy)' }}>
                   Boulevard Principal, Alger
                 </div>
               </div>
@@ -113,13 +107,13 @@ export const QuickInfoStrip = ({ onOpenBooking }: QuickInfoStripProps) => {
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '1rem',
-              padding: '0.5rem',
+              gap: '0.85rem',
+              padding: '0.4rem',
             }}>
               <div style={{
-                width: '46px',
-                height: '46px',
-                borderRadius: '12px',
+                width: '42px',
+                height: '42px',
+                borderRadius: '10px',
                 background: 'var(--color-accent-subtle)',
                 color: 'var(--color-accent)',
                 display: 'flex',
@@ -127,14 +121,14 @@ export const QuickInfoStrip = ({ onOpenBooking }: QuickInfoStripProps) => {
                 justifyContent: 'center',
                 flexShrink: 0
               }}>
-                <Clock size={22} />
+                <Clock size={20} />
               </div>
               <div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600 }}>
                   Horaires d'ouverture
                 </div>
-                <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--color-navy)' }}>
-                  Samedi – Jeudi : 09h – 17h
+                <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--color-navy)' }}>
+                  Sam – Jeu : 09h – 17h
                 </div>
               </div>
             </div>
@@ -142,10 +136,9 @@ export const QuickInfoStrip = ({ onOpenBooking }: QuickInfoStripProps) => {
             {/* Emergency & Quick booking */}
             <div style={{
               display: 'flex',
-              gap: '0.6rem',
-              justifyContent: 'flex-end',
+              gap: '0.5rem',
               alignItems: 'center'
-            }}>
+            }} className="quick-strip-actions">
               <a
                 href={`https://wa.me/213555123456?text=${encodeURIComponent('Bonjour, je souhaite un renseignement ou prendre un rendez-vous au cabinet Khellaf Orthodontics.')}`}
                 target="_blank"
@@ -154,7 +147,10 @@ export const QuickInfoStrip = ({ onOpenBooking }: QuickInfoStripProps) => {
                 style={{
                   borderColor: '#25d366',
                   color: '#128c7e',
-                  fontWeight: 700
+                  fontWeight: 700,
+                  flex: 1,
+                  justifyContent: 'center',
+                  padding: '0.6rem 0.75rem'
                 }}
               >
                 <MessageSquare size={16} />
@@ -164,8 +160,9 @@ export const QuickInfoStrip = ({ onOpenBooking }: QuickInfoStripProps) => {
               <button
                 onClick={onOpenBooking}
                 className="btn btn-primary btn-sm"
+                style={{ flex: 1, padding: '0.6rem 0.75rem' }}
               >
-                <span>Réserver en ligne</span>
+                <span>Réserver</span>
               </button>
             </div>
 
@@ -174,16 +171,36 @@ export const QuickInfoStrip = ({ onOpenBooking }: QuickInfoStripProps) => {
       </div>
 
       <style>{`
+        .quick-strip-wrapper {
+          margin-top: -2.5rem;
+        }
         @media (max-width: 1024px) {
+          .quick-strip-wrapper {
+            margin-top: -1.5rem;
+          }
           .quick-strip-grid {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 1.25rem !important;
           }
         }
         @media (max-width: 640px) {
+          .quick-strip-wrapper {
+            margin-top: 0.5rem !important;
+            margin-bottom: 1.5rem !important;
+          }
+          .quick-strip-card {
+            padding: 1rem !important;
+            border-radius: var(--radius-lg) !important;
+          }
           .quick-strip-grid {
             grid-template-columns: 1fr !important;
-            gap: 1rem !important;
+            gap: 0.85rem !important;
+          }
+          .quick-strip-actions {
+            flex-direction: row !important;
+            width: 100% !important;
+            padding-top: 0.5rem;
+            border-top: 1px dashed var(--border-light);
           }
         }
       `}</style>

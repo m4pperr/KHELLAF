@@ -10,12 +10,14 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
   return (
     <section
       id="accueil"
+      className="hero-section"
       style={{
         position: 'relative',
-        paddingTop: '3.5rem',
-        paddingBottom: '5rem',
+        paddingTop: '3rem',
+        paddingBottom: '4.5rem',
         background: 'radial-gradient(circle at 85% 15%, rgba(20, 148, 136, 0.12) 0%, transparent 50%), radial-gradient(circle at 10% 80%, rgba(13, 107, 99, 0.08) 0%, transparent 45%), #f8fafc',
         overflow: 'hidden',
+        width: '100%'
       }}
     >
       {/* Subtle decorative background shapes */}
@@ -24,8 +26,8 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
           position: 'absolute',
           top: '-10%',
           right: '-5%',
-          width: '550px',
-          height: '550px',
+          width: '450px',
+          height: '450px',
           borderRadius: '50%',
           background: 'linear-gradient(135deg, rgba(20, 148, 136, 0.08), rgba(217, 119, 6, 0.05))',
           filter: 'blur(60px)',
@@ -37,7 +39,7 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 0.95fr)',
-          gap: '3.5rem',
+          gap: '3rem',
           alignItems: 'center'
         }} className="hero-grid">
           {/* Left Hero Content */}
@@ -47,13 +49,15 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.6rem',
-                padding: '0.45rem 1.15rem',
+                gap: '0.5rem',
+                padding: '0.4rem 0.9rem',
                 background: 'white',
                 border: '1px solid rgba(20, 148, 136, 0.25)',
                 borderRadius: 'var(--radius-full)',
                 boxShadow: 'var(--shadow-sm)',
-                marginBottom: '1.5rem',
+                marginBottom: '1.25rem',
+                flexWrap: 'wrap',
+                maxWidth: '100%'
               }}
             >
               <span style={{
@@ -65,26 +69,27 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
                 borderRadius: '50%',
                 background: 'var(--color-primary-subtle)',
                 color: 'var(--color-primary)',
+                flexShrink: 0
               }}>
                 <Sparkles size={12} />
               </span>
               <span style={{
-                fontSize: '0.84rem',
+                fontSize: '0.8rem',
                 fontWeight: 700,
                 color: 'var(--color-navy)',
-                letterSpacing: '0.02em',
+                letterSpacing: '0.01em',
               }}>
-                Excellence Orthodontique à Draria, Alger
+                Cabinet Orthodontique à Draria, Alger
               </span>
-              <span className="badge badge-gold" style={{ fontSize: '0.7rem', padding: '0.15rem 0.5rem' }}>
+              <span className="badge badge-gold" style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem' }}>
                 Pitts 21 & Aligneurs
               </span>
             </div>
 
             {/* Main Headline */}
             <h1 style={{
-              fontSize: '3.35rem',
-              lineHeight: 1.15,
+              fontSize: '3.1rem',
+              lineHeight: 1.18,
               color: 'var(--color-navy)',
               marginBottom: '1.25rem',
               letterSpacing: '-0.03em',
@@ -95,23 +100,23 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
 
             {/* Description */}
             <p style={{
-              fontSize: '1.15rem',
-              lineHeight: 1.7,
+              fontSize: '1.05rem',
+              lineHeight: 1.65,
               color: 'var(--text-muted)',
-              marginBottom: '2.25rem',
+              marginBottom: '2rem',
               maxWidth: '560px',
-            }}>
-              Bienvenue chez <strong>Khellaf Orthodontics</strong>. Cabinet spécialisé dédié aux traitements d'alignement avancés : protocole mondial de pointe <strong>Pitts 21</strong>, aligneurs invisibles sur mesure et orthodontie douce pour enfants, adolescents et adultes.
+            }} className="hero-desc">
+              Bienvenue chez <strong>Khellaf Orthodontics</strong>. Spécialiste de l'orthodontie moderne : protocole novateur <strong>Pitts 21</strong>, aligneurs invisibles thermoformés et orthodontie douce pour enfants, adolescents et adultes.
             </p>
 
             {/* Action Buttons */}
             <div style={{
               display: 'flex',
-              gap: '1rem',
+              gap: '0.85rem',
               alignItems: 'center',
               flexWrap: 'wrap',
-              marginBottom: '2.75rem',
-            }}>
+              marginBottom: '2.5rem',
+            }} className="hero-actions">
               <button
                 onClick={onOpenBooking}
                 className="btn btn-primary btn-lg"
@@ -119,19 +124,16 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
                   boxShadow: '0 8px 25px rgba(13, 107, 99, 0.35)',
                 }}
               >
-                <Calendar size={20} />
+                <Calendar size={18} />
                 <span>Prendre Rendez-vous</span>
               </button>
 
               <button
                 onClick={onExplorePitts}
                 className="btn btn-secondary btn-lg"
-                style={{
-                  borderColor: 'var(--border-medium)',
-                }}
               >
                 <span>Découvrir le Protocole Pitts 21</span>
-                <ArrowRight size={18} style={{ color: 'var(--color-primary)' }} />
+                <ArrowRight size={17} style={{ color: 'var(--color-primary)' }} />
               </button>
             </div>
 
@@ -140,9 +142,9 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
               gap: '1.25rem',
-              paddingTop: '1.75rem',
+              paddingTop: '1.5rem',
               borderTop: '1px solid var(--border-light)',
-            }}>
+            }} className="trust-badges-grid">
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <div style={{
                   width: '38px',
@@ -194,9 +196,9 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
           </div>
 
           {/* Right Visual Card with Interactive Aesthetic Highlights */}
-          <div style={{ position: 'relative' }}>
+          <div style={{ position: 'relative', width: '100%' }}>
             <div
-              className="glass-card"
+              className="glass-card hero-card"
               style={{
                 background: 'linear-gradient(145deg, #ffffff 0%, #f0fdfa 100%)',
                 border: '1px solid rgba(20, 148, 136, 0.2)',
@@ -204,6 +206,7 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
                 padding: '2rem',
                 position: 'relative',
                 overflow: 'hidden',
+                width: '100%'
               }}
             >
               {/* Card Header */}
@@ -211,13 +214,13 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                marginBottom: '1.5rem',
-                paddingBottom: '1rem',
+                marginBottom: '1.25rem',
+                paddingBottom: '0.85rem',
                 borderBottom: '1px solid var(--border-light)'
               }}>
                 <div>
                   <div style={{
-                    fontSize: '0.78rem',
+                    fontSize: '0.75rem',
                     fontWeight: 700,
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em',
@@ -226,7 +229,7 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
                     Cabinet Spécialisé Draria
                   </div>
                   <div style={{
-                    fontSize: '1.25rem',
+                    fontSize: '1.2rem',
                     fontWeight: 800,
                     color: 'var(--color-navy)',
                     fontFamily: 'var(--font-heading)'
@@ -235,8 +238,8 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
                   </div>
                 </div>
                 <div className="badge badge-teal">
-                  <Star size={13} fill="currentColor" />
-                  <span>5.0 • Recommandé</span>
+                  <Star size={12} fill="currentColor" />
+                  <span>5.0 • Avis</span>
                 </div>
               </div>
 
@@ -245,92 +248,79 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
                 style={{
                   background: 'linear-gradient(135deg, #071520 0%, #0d2b3e 100%)',
                   borderRadius: 'var(--radius-md)',
-                  padding: '1.75rem',
+                  padding: '1.5rem',
                   color: 'white',
-                  marginBottom: '1.5rem',
+                  marginBottom: '1.25rem',
                   position: 'relative',
                   overflow: 'hidden',
                 }}
               >
-                {/* Background glow circle */}
-                <div style={{
-                  position: 'absolute',
-                  top: '-20px',
-                  right: '-20px',
-                  width: '140px',
-                  height: '140px',
-                  borderRadius: '50%',
-                  background: 'rgba(20, 148, 136, 0.3)',
-                  filter: 'blur(30px)',
-                }} />
-
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  marginBottom: '1rem'
+                  marginBottom: '0.75rem'
                 }}>
                   <span style={{
-                    fontSize: '0.75rem',
+                    fontSize: '0.72rem',
                     fontWeight: 700,
                     textTransform: 'uppercase',
-                    letterSpacing: '0.08em',
+                    letterSpacing: '0.06em',
                     color: '#5eead4'
                   }}>
-                    Innovation Orthodontique
+                    Innovation Esthétique
                   </span>
                   <span style={{
                     background: 'rgba(255,255,255,0.15)',
-                    padding: '0.2rem 0.6rem',
+                    padding: '0.15rem 0.5rem',
                     borderRadius: '999px',
-                    fontSize: '0.75rem',
-                    backdropFilter: 'blur(4px)'
+                    fontSize: '0.72rem',
                   }}>
-                    Protocole Pitts 21
+                    Pitts 21
                   </span>
                 </div>
 
                 <div style={{
-                  fontSize: '1.35rem',
+                  fontSize: '1.25rem',
                   fontWeight: 700,
-                  marginBottom: '0.5rem',
+                  marginBottom: '0.4rem',
                   fontFamily: 'var(--font-heading)'
                 }}>
                   Le Sourire 12 Dents Élargi
                 </div>
 
                 <p style={{
-                  fontSize: '0.88rem',
+                  fontSize: '0.85rem',
                   color: '#94a3b8',
                   lineHeight: 1.5,
-                  marginBottom: '1.25rem'
+                  marginBottom: '1rem'
                 }}>
-                  Un positionnement des boîtiers qui harmonise la ligne des incisives avec la lèvre pour un résultat rayonnant sous tous les angles.
+                  Alignement suivant la courbure naturelle des lèvres pour un éclat jeune et un visage soutenu.
                 </p>
 
-                {/* Interactive Smile Arc Curve Visualization */}
+                {/* Smile Arc Curve Highlights */}
                 <div style={{
-                  padding: '0.75rem 1rem',
+                  padding: '0.65rem 0.75rem',
                   background: 'rgba(255, 255, 255, 0.06)',
-                  borderRadius: '10px',
+                  borderRadius: '8px',
                   border: '1px solid rgba(255,255,255,0.1)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-around'
                 }}>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>Friction</div>
-                    <div style={{ fontWeight: 700, color: '#34d399', fontSize: '0.92rem' }}>Ultra-Basse</div>
+                    <div style={{ fontSize: '0.68rem', color: '#94a3b8' }}>Friction</div>
+                    <div style={{ fontWeight: 700, color: '#34d399', fontSize: '0.85rem' }}>Basse</div>
                   </div>
-                  <div style={{ width: '1px', height: '24px', background: 'rgba(255,255,255,0.15)' }} />
+                  <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.15)' }} />
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>Visites</div>
-                    <div style={{ fontWeight: 700, color: '#38bdf8', fontSize: '0.92rem' }}>Espacées</div>
+                    <div style={{ fontSize: '0.68rem', color: '#94a3b8' }}>Visites</div>
+                    <div style={{ fontWeight: 700, color: '#38bdf8', fontSize: '0.85rem' }}>Espacées</div>
                   </div>
-                  <div style={{ width: '1px', height: '24px', background: 'rgba(255,255,255,0.15)' }} />
+                  <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.15)' }} />
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>Extractions</div>
-                    <div style={{ fontWeight: 700, color: '#fbbf24', fontSize: '0.92rem' }}>Évitées</div>
+                    <div style={{ fontSize: '0.68rem', color: '#94a3b8' }}>Extractions</div>
+                    <div style={{ fontWeight: 700, color: '#fbbf24', fontSize: '0.85rem' }}>Évitées</div>
                   </div>
                 </div>
               </div>
@@ -339,21 +329,21 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
               <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '0.85rem'
+                gap: '0.75rem'
               }}>
                 {CLINIC_STATS.map((stat, i) => (
                   <div
                     key={i}
                     style={{
                       background: 'white',
-                      padding: '1rem',
+                      padding: '0.85rem',
                       borderRadius: 'var(--radius-md)',
                       border: '1px solid var(--border-light)',
                       boxShadow: 'var(--shadow-xs)'
                     }}
                   >
                     <div style={{
-                      fontSize: '1.45rem',
+                      fontSize: '1.35rem',
                       fontWeight: 800,
                       color: 'var(--color-primary)',
                       fontFamily: 'var(--font-heading)',
@@ -362,10 +352,10 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
                       {stat.value}
                     </div>
                     <div style={{
-                      fontSize: '0.8rem',
+                      fontSize: '0.75rem',
                       color: 'var(--text-muted)',
                       fontWeight: 600,
-                      marginTop: '0.2rem'
+                      marginTop: '0.15rem'
                     }}>
                       {stat.label}
                     </div>
@@ -375,17 +365,17 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
 
               {/* Direct Appointment Mini CTA */}
               <div style={{
-                marginTop: '1.25rem',
-                padding: '0.85rem 1rem',
+                marginTop: '1rem',
+                padding: '0.75rem 0.9rem',
                 background: 'var(--color-primary-subtle)',
                 borderRadius: 'var(--radius-md)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <div className="status-dot" />
-                  <span style={{ fontSize: '0.84rem', fontWeight: 600, color: 'var(--color-primary-dark)' }}>
+                  <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-primary-dark)' }}>
                     Nouveaux patients bienvenus
                   </span>
                 </div>
@@ -396,14 +386,14 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
                     border: 'none',
                     color: 'var(--color-primary)',
                     fontWeight: 700,
-                    fontSize: '0.84rem',
+                    fontSize: '0.82rem',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.3rem'
+                    gap: '0.25rem'
                   }}
                 >
-                  Réserver <ArrowRight size={14} />
+                  Réserver <ArrowRight size={13} />
                 </button>
               </div>
             </div>
@@ -415,10 +405,42 @@ export const Hero = ({ onOpenBooking, onExplorePitts }: HeroProps) => {
         @media (max-width: 960px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
-            gap: 2.5rem !important;
+            gap: 2rem !important;
           }
           .hero-headline {
-            font-size: 2.4rem !important;
+            font-size: 2.2rem !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .hero-section {
+            padding-top: 2rem !important;
+            padding-bottom: 3rem !important;
+          }
+          .hero-headline {
+            font-size: 1.85rem !important;
+          }
+          .hero-desc {
+            font-size: 0.95rem !important;
+            margin-bottom: 1.5rem !important;
+          }
+          .hero-actions {
+            flex-direction: column;
+            width: 100%;
+          }
+          .hero-actions button {
+            width: 100% !important;
+          }
+          .hero-card {
+            padding: 1.25rem !important;
+          }
+          .trust-badges-grid {
+            grid-template-columns: 1fr !important;
+            gap: 0.85rem !important;
+          }
+        }
+        @media (max-width: 380px) {
+          .hero-headline {
+            font-size: 1.6rem !important;
           }
         }
       `}</style>
